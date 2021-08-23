@@ -58,7 +58,7 @@ Method
 We first need to retrieve the observations of the standard star LTT
 3218 from the [ESO Science Archive Facility][2] (SAF).  For this
 purpose we query the SAF with the the python3 library [astroquery][4]
-(Ginsburg et al. 2019), that in the used version[^1] provides a
+(Ginsburg et al. 2019), that in the used version (`0.4.2.dev6684`) provides a
 front-end to the SAF's MUSE Raw Data Query Form.
 
 In order to properly reduce these standard star observations, we
@@ -97,10 +97,11 @@ associations for reducing a standard star exposure to a datacube.  To
 parse the XML tree programmatically we use [Python 3's Element Tree
 XML
 API](https://docs.python.org/3/library/xml.etree.elementtree.html).
-Furthermore, the calls to the MUSE pipeline[^4] recipes are made via
-Python-CPL Library (Streicher and Weilbacher 2012, Streicher 2016).
-The script automating the reduction of the raw standard star data into
-datacubes ready for analysis is called `reduce_automat_v2.py`.
+Furthermore, the calls to the MUSE pipeline (here version 2.8.3 was
+used) recipes are made via Python-CPL Library (Streicher and
+Weilbacher 2012, Streicher 2016).  The script automating the reduction
+of the raw standard star data into datacubes ready for analysis is
+called `reduce_automat_v2.py`.
 
 For the reduction all adjustable parameters of the pipeline are left
 at default values.  In the final `muse_scipost` recipe of the
@@ -153,7 +154,7 @@ pixel coordinates.  This is because the absolute astrometry of a MUSE
 observation is determined relative to the telescope guide star, which
 is chosen at the liking of the telescope operator when acquiring a
 target, and the astrometric accuracy varies between different guide
-stars.  This effect is demonstrated in the following plot[^5]. 
+stars.  This effect is demonstrated in the following plot. 
 
 ![Offset between coordinates of detected
 stars](./img/test_coordtrafo.png)  
@@ -163,15 +164,18 @@ catalogue (blue points) and a catalogue from a different observation
 catalogue also contains a few erroneous detections.  The green crosses
 show the transformation of the reference catalogue coordinates,
 obtained with the method described below, that account for the offsets
-relative reference catalogue.*
+relative reference catalogue. (This figure is created by the script
+`test_coordtrafo.py`.)*
 
 To account for these offsets between reference catalogue coordinates
 `(x_r, y_r)` and coordinates in the other catalogues `(x_t, y_t)`
 before extracting the spectra in each catalogue we compute a linear
 transformation of the coordinates (i.e., `x_t = a × x_r + b × y_r + c`
 and `y_t = d × x_r + e × y_r + d`) for each catalogue relative to the
-reference catalogue[^8].  This is achieved with the catalogue matching
-algorithm `quad-kd`[^6] of Heyl (2013). 
+reference catalogue. This is achieved with the catalogue matching algorithm
+`quad-kd` of Heyl (2013).  (The transformations neccesary here are
+typically characterised by `a ≈ e ≈ 1` and `b ≈ d ≈ 0`, i.e. pure
+translations.) 
 
 Equipped with the coordinates of the stars for each observation we
 then extracted the spectra for each star in 5 different apertures of
@@ -179,45 +183,52 @@ diameter (0.6, 1.0, 1.4, 1.8, 2.2)'' or, equivalently, (3, 5, 7, 9,
 11) pixels.  For each spectral extraction the variances are propagated
 accordingly from the `STAT` extension of the datacube.  To illustrate
 the quality of the extracted spectra we show below a plot of four
-extracted spectra[^7].
+extracted spectra.
 
 ![Extracted spectra from the reference stars](./img/spec_examples.png)  
 *Extracted spectra from the reference stars 25, 6, 22, and 15 (from
 top left to bottm right). The x-axes are the indexes of the spectral
 layers and the y-axis is flux in arbitrary units.  Note that spectral
 energy distribution of the extracted is not real, as an arbitrary
-response curve was used for extracting the spectra.*
+response curve was used for extracting the spectra. (Plots of the
+individual spectra from the spectral extractions are done with the
+script `plot_refspec.py`.)*
 
 The routine performing the coordinate transformation with respect to
 the reference catalogue and the spectral extractions for the
-individual exposures is given in the Python3 script[^9] `extract_spectra.py`.
+individual exposures is given in the Python3 script `extract_spectra.py`.
 
+(For the extraction of the reference spectra the coordinate
+transformation is not required.  For those spectra extraction is
+handled by the script `extract_reference_spectra.py`.)
 
 Results
 -------
 
 In the following we present a two simple tests that characterise the
 temporal stability of the differential photometry.  We focus here on
-results in the `I_Bessel` band[^10].  Our results are based on the
-spectra extracted in the 1.8'' diameter aperture, as this aperture
-provided the optimal SNR for the extracted spectra for the majority of
-observations.  (We provide a table with the SNR measurements in
-`I_Bessel` in the appendix.)
+results in the `I_Bessel` band (taken from the ADPS; Moro and Munari
+200).  Our results are based on the spectra extracted in the 1.8''
+diameter aperture, as this aperture provided the optimal SNR for the
+extracted spectra for the majority of observations.  (We provide a
+table with the SNR measurements in `I_Bessel` in the appendix.)
 
 First, we show the timeline of the stability for the first four pairs
-of the highest SN stars[^11] (`6/4`, `4/22`, `22/2`, and `2/15`; we do not
+of the highest SN stars (`6/4`, `4/22`, `22/2`, and `2/15`; we do not
 use the star `25` as it is close to the edge off the field of view,
 and therefore subject to different flux loss due to differences in
 atmospheric seeing). 
 
+
 ![Timeline visualising](./img/spec_spat_diff_4highsn.png)  
 *Timeline visualising the deviations of the flux density ratio
-`(F1/F2)` between two stars in the `IBessel` band relative to the
-mean `<F1/F2>` over all displayed measurements from 2019:
-`(F1/F2)/<F1/F_2> - 1`.  We show here the four pairs with the
-highest SNR.  (The date range `2019-06-01` -- `2019-11-01` has been
-omitted from the plot since in this range LTT 3218 was not
-observed.)*
+`(F1/F2)` between two stars in the `IBessel` band relative to the mean
+`<F1/F2>` over all displayed measurements from 2019:
+`(F1/F2)/<F1/F_2> - 1`.  We show here the four pairs with the highest
+SNR.  (The date range `2019-06-01` -- `2019-11-01` has been omitted
+from the plot since in this range LTT 3218 was not observed.  The
+individual panels of the figure are created with the script
+`spec_spat_diff_iband_test.py`.)*
 
 For the four pairs with the highest SNRs standard deviations from the
 mean are always less then 10 % (standard deviations are 0.05, 0.04,
@@ -233,14 +244,15 @@ trend is statistically not significant (Spearman ρ=0.125, p=0.32).
 
 As a second test, we investigated how the standard deviation over the
 whole time-series depends on the SNR of the stars used.  This is shown
-in the following figure[^12].  Since our analysis is based on pairs of
+in the following figure.  Since our analysis is based on pairs of
 stars, we plot on the x-axis the geometric mean of the two stars
 involved.  (As above, spectra from star 25 are excluded from the
 analysis.)
 
 ![SNR Variations](./img/spec_spat_diff_sn_test.png)  
 *Standard deviation of the relative flux-density variations over all
-2019 observations as a function of SNR.*
+2019 observations as a function of SNR. (This figure is created with
+the script `spec_spat_diff_sn_test.py`.)*
 
 Concluding Remarks
 ------------------
@@ -266,7 +278,7 @@ References
 [Giesers, B. 2020, PhD Thesis, Georg-August-Universität Göttingen](http://hdl.handle.net/21.11130/00-1735-0000-0005-13B4-A)  
 [Giesers, B. et al. 2018, MNRAS 475, L15](https://doi.org/10.1093/mnrasl/slx203)  
 [Ginsburg A. et al. 2019, AJ 157, 98](https://doi.org/10.3847/1538-3881/aafc33)  
-[Heyl, J.S. 2013, MNRAS 433, 935](https://doi.org/10.1093/mnras/stt781)  
+[Heyl, J.S. 2013, MNRAS 433, 935](https://doi.org/10.1093/mnras/stt781) / <http://ascl.net/2107.022>  
 [MUSE-DRP: MUSE Data Reduction Pipeline, `ascl:1610.004`](http://ascl.net/1610.004)  
 [Moro, D. and Munari, U. 2000, A&AS 147, 361](https://doi.org/10.1051/aas:2000370)
 [Selman, F.J. 2019, AN 341, 26](https://doi.org/10.1002/asna.202013637)  
@@ -281,13 +293,15 @@ Appendix
 
 ### Table of available data for LTT 3218 in 2018 ###
 
-The table below (`standard_overview_table_2018.ascii` in this repository)
-is created with the script[^2] `query_standard_overview_table.py`.
-The first column of table provides the dates for which the standard LTT
-3218 was observed in at least one instrument mode and the following
-columns indicate whether a science target (`SCI`; observation for
-which calibration data can be retrieved with our workaround) or not
-(`NOSCI`; observation not usable with our workaround) is available.
+The table below (`standard_overview_table_2018.ascii` in this
+repository) is created with the script
+`query_standard_overview_table.py`; adjust the variable `eso_username`
+if you re-use the scripts in this repository.  The first column of
+table provides the dates for which the standard LTT 3218 was observed
+in at least one instrument mode and the following columns indicate
+whether a science target (`SCI`; observation for which calibration
+data can be retrieved with our workaround) or not (`NOSCI`;
+observation not usable with our workaround) is available.
 
 
 
@@ -380,33 +394,3 @@ machine readable table of the SNR values for all extraction apertures
 is provided in `sn_refspecs_table.ascii`.
 
 
-[^1]: We used astroquery version 0.4.2.dev6684.
-
-[^2]: Adjust the variable `eso_username` if you re-use the scripts in
-    this repository.
-
-[^4]: Version 2.8.3 of the MUSE pipeline was used.
-
-[^5]: This figure is created by the script `test_coordtrafo.py`.
-
-[^6]: The C source code for the algorithm is downloadable at
-    <http://ascl.net/2107.022> and
-    <https://github.com/UBC-Astrophysics/kd-match>.
-
-[^7]: Plots of the individual spectra from the spectral extractions
-      are done with the script `plot_refspec.py`.
-
-[^8]: The transformations neccesary here are typically characterised
-    by `a ≈ e ≈ 1` and `b ≈ d ≈ 0`, i.e. pure translations.
-
-[^9]: For the extraction of the reference spectra the coordinate
-    transformation is not required.  For those spectra extraction is
-    handled by the script `extract_reference_spectra.py`.
-
-[^10]: The `I_Bessel` curve (`Ibessel.ascii`) is taken from the ADPS
-   (Asiago Database on Photometric Systems; Moro and Munari 200)
-
-[^11]: The individual panels of the figure are created with the script
-   `spec_spat_diff_iband_test.py`.
-
-[^12]: This figure is created with the script `spec_spat_diff_sn_test.py`.
