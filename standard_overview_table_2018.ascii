@@ -1,0 +1,47 @@
+|       DATE | WFM_NOAO_N | WFM_NOAO_E | WFM_AO_N | WFM_AO_E |
+| 2018-01-03 |        SCI |            |          |          |
+| 2018-01-04 |        SCI |            |          |          |
+| 2018-01-22 |        SCI |      NOSCI |          |          |
+| 2018-01-27 |      NOSCI |            |          |          |
+| 2018-01-29 |            |            |    NOSCI |          |
+| 2018-02-12 |        SCI |      NOSCI |      SCI |    NOSCI |
+| 2018-02-20 |        SCI |      NOSCI |          |          |
+| 2018-03-08 |        SCI |            |          |          |
+| 2018-03-09 |        SCI |        SCI |    NOSCI |      SCI |
+| 2018-03-10 |            |            |          |      SCI |
+| 2018-03-11 |        SCI |      NOSCI |    NOSCI |      SCI |
+| 2018-03-12 |      NOSCI |      NOSCI |      SCI |      SCI |
+| 2018-03-19 |        SCI |      NOSCI |      SCI |      SCI |
+| 2018-03-20 |        SCI |            |      SCI |          |
+| 2018-03-24 |        SCI |            |          |          |
+| 2018-03-31 |            |            |    NOSCI |          |
+| 2018-04-03 |            |            |      SCI |          |
+| 2018-04-07 |        SCI |        SCI |      SCI |    NOSCI |
+| 2018-04-08 |        SCI |      NOSCI |      SCI |    NOSCI |
+| 2018-04-09 |        SCI |        SCI |      SCI |    NOSCI |
+| 2018-04-11 |        SCI |      NOSCI |      SCI |      SCI |
+| 2018-04-12 |        SCI |      NOSCI |      SCI |    NOSCI |
+| 2018-04-13 |        SCI |      NOSCI |      SCI |    NOSCI |
+| 2018-04-15 |        SCI |        SCI |      SCI |    NOSCI |
+| 2018-04-16 |        SCI |      NOSCI |      SCI |    NOSCI |
+| 2018-04-17 |            |            |      SCI |          |
+| 2018-05-06 |        SCI |        SCI |      SCI |    NOSCI |
+| 2018-05-10 |      NOSCI |        SCI |      SCI |    NOSCI |
+| 2018-05-11 |        SCI |      NOSCI |      SCI |      SCI |
+| 2018-05-12 |        SCI |      NOSCI |      SCI |      SCI |
+| 2018-05-13 |        SCI |      NOSCI |    NOSCI |    NOSCI |
+| 2018-05-14 |        SCI |        SCI |      SCI |      SCI |
+| 2018-10-16 |        SCI |            |          |          |
+| 2018-11-28 |        SCI |            |          |          |
+| 2018-11-29 |        SCI |            |      SCI |          |
+| 2018-12-02 |        SCI |        SCI |      SCI |      SCI |
+| 2018-12-03 |        SCI |            |      SCI |          |
+| 2018-12-04 |        SCI |        SCI |      SCI |    NOSCI |
+| 2018-12-05 |        SCI |        SCI |          |          |
+| 2018-12-06 |      NOSCI |      NOSCI |      SCI |    NOSCI |
+| 2018-12-07 |            |            |      SCI |    NOSCI |
+| 2018-12-08 |        SCI |            |      SCI |          |
+| 2018-12-09 |            |            |      SCI |          |
+| 2018-12-10 |        SCI |            |      SCI |          |
+| 2018-12-11 |      NOSCI |            |      SCI |          |
+| 2018-12-12 |        SCI |      NOSCI |      SCI |    NOSCI |
