@@ -139,10 +139,11 @@ exposure - catalogue combination (`2019-03-10` / `WFM-AO-N`) defines
 the reference catalogue and the plot for this exposure is shown
 below. 
 
-![2019-03-10 WFM-AO-N detection image with DAOFIND detected sources
-indicated. This catalogue defines our reference frame and the IDs of
-the stars are used to identify the extracted spectra in all
-exposures.](./img/LTT_3218wfm-ao-n_2019-03-10_starcat.png)
+![2019-03-10 WFM-AO-N detection
+image](./img/LTT_3218wfm-ao-n_2019-03-10_starcat.png) *2019-03-10
+WFM-AO-N detection image with DAOFIND detected sources indicated. This
+catalogue defines our reference frame and the IDs of the stars are
+used to identify the extracted spectra in all exposures.*
 
 
 Sifting through all detection images we sometimes noted significant (∼
@@ -153,13 +154,15 @@ is chosen at the liking of the telescope operator when acquiring a
 target, and the astrometric accuracy varies between different guide
 stars.  This effect is demonstrated in the following plot[^5]. 
 
-![Offset between coordinates of detected stars in the reference
-catalogue (blue points) and a catalogue from a different observation
-(`2019-05-08` / `WFM-AO-N`; orange points).  Note that the latter
-catalogue also contains a few erroneous detections.  The green crosses
-show the transformation of the reference catalogue coordinates,
-obtained with the method described below, that account for the
-offsets relative reference catalogue.](./img/test_coordtrafo.png)
+![Offset between coordinates of detected
+stars](./img/test_coordtrafo.png) *Offset between coordinates of
+detected stars in the reference catalogue (blue points) and a
+catalogue from a different observation (`2019-05-08` / `WFM-AO-N`;
+orange points).  Note that the latter catalogue also contains a few
+erroneous detections.  The green crosses show the transformation of
+the reference catalogue coordinates, obtained with the method
+described below, that account for the offsets relative reference
+catalogue.*
 
 To account for these offsets between reference catalogue coordinates
 `(x_r, y_r)` and coordinates in the other catalogues `(x_t, y_t)`
@@ -177,11 +180,12 @@ accordingly from the `STAT` extension of the datacube.  To illustrate
 the quality of the extracted spectra we show below a plot of four
 extracted spectra[^7].
 
-![Extracted spectra from the reference stars 25, 6, 22, and 15 (from
+![Extracted spectra from the reference stars](./img/spec_examples.png)
+*Extracted spectra from the reference stars 25, 6, 22, and 15 (from
 top left to bottm right). The x-axes are the indexes of the spectral
 layers and the y-axis is flux in arbitrary units.  Note that spectral
 energy distribution of the extracted is not real, as an arbitrary
-response curve was used for extracting the spectra.](./img/spec_examples.png)
+response curve was used for extracting the spectra.*
 
 The routine performing the coordinate transformation with respect to
 the reference catalogue and the spectral extractions for the
@@ -212,8 +216,7 @@ mean `<F1/F2>` over all displayed measurements from 2019:
 `(F1/F2)/<F1/F_2> - 1`.  We show here the four pairs with the
 highest SNR.  (The date range `2019-06-01` -- `2019-11-01` has been
 omitted from the plot since in this range LTT 3218 was not
-observed.)
-*
+observed.)*
 
 For the four pairs with the highest SNRs standard deviations from the
 mean are always less then 10 % (standard deviations are 0.05, 0.04,
@@ -234,9 +237,9 @@ stars, we plot on the x-axis the geometric mean of the two stars
 involved.  (As above, spectra from star 25 are excluded from the
 analysis.)
 
-![Standard deviation of the relative flux-density variations over all
-2019 observations as a function of SNR.](./img/spec_spat_diff_sn_test.png)
-
+![SNR Variations](./img/spec_spat_diff_sn_test.png) *Standard deviation of the
+relative flux-density variations over all 2019 observations as a
+function of SNR.**
 
 Concluding Remarks
 ------------------
