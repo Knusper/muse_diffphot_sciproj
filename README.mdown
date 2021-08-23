@@ -140,10 +140,11 @@ the reference catalogue and the plot for this exposure is shown
 below. 
 
 ![2019-03-10 WFM-AO-N detection
-image](./img/LTT_3218wfm-ao-n_2019-03-10_starcat.png) *2019-03-10
-WFM-AO-N detection image with DAOFIND detected sources indicated. This
-catalogue defines our reference frame and the IDs of the stars are
-used to identify the extracted spectra in all exposures.*
+image](./img/LTT_3218wfm-ao-n_2019-03-10_starcat.png)  
+*2019-03-10 WFM-AO-N detection image with DAOFIND detected sources
+indicated. This catalogue defines our reference frame and the IDs of
+the stars are used to identify the extracted spectra in all
+exposures.*
 
 
 Sifting through all detection images we sometimes noted significant (∼
@@ -155,14 +156,14 @@ target, and the astrometric accuracy varies between different guide
 stars.  This effect is demonstrated in the following plot[^5]. 
 
 ![Offset between coordinates of detected
-stars](./img/test_coordtrafo.png) *Offset between coordinates of
-detected stars in the reference catalogue (blue points) and a
-catalogue from a different observation (`2019-05-08` / `WFM-AO-N`;
-orange points).  Note that the latter catalogue also contains a few
-erroneous detections.  The green crosses show the transformation of
-the reference catalogue coordinates, obtained with the method
-described below, that account for the offsets relative reference
-catalogue.*
+stars](./img/test_coordtrafo.png)  
+*Offset between coordinates of detected stars in the reference
+catalogue (blue points) and a catalogue from a different observation
+(`2019-05-08` / `WFM-AO-N`; orange points).  Note that the latter
+catalogue also contains a few erroneous detections.  The green crosses
+show the transformation of the reference catalogue coordinates,
+obtained with the method described below, that account for the offsets
+relative reference catalogue.*
 
 To account for these offsets between reference catalogue coordinates
 `(x_r, y_r)` and coordinates in the other catalogues `(x_t, y_t)`
@@ -180,7 +181,7 @@ accordingly from the `STAT` extension of the datacube.  To illustrate
 the quality of the extracted spectra we show below a plot of four
 extracted spectra[^7].
 
-![Extracted spectra from the reference stars](./img/spec_examples.png)
+![Extracted spectra from the reference stars](./img/spec_examples.png)  
 *Extracted spectra from the reference stars 25, 6, 22, and 15 (from
 top left to bottm right). The x-axes are the indexes of the spectral
 layers and the y-axis is flux in arbitrary units.  Note that spectral
@@ -209,7 +210,7 @@ use the star `25` as it is close to the edge off the field of view,
 and therefore subject to different flux loss due to differences in
 atmospheric seeing). 
 
-![test](./img/spec_spat_diff_4highsn.png)
+![Timeline visualising](./img/spec_spat_diff_4highsn.png)  
 *Timeline visualising the deviations of the flux density ratio
 `(F1/F2)` between two stars in the `IBessel` band relative to the
 mean `<F1/F2>` over all displayed measurements from 2019:
@@ -237,9 +238,9 @@ stars, we plot on the x-axis the geometric mean of the two stars
 involved.  (As above, spectra from star 25 are excluded from the
 analysis.)
 
-![SNR Variations](./img/spec_spat_diff_sn_test.png) *Standard deviation of the
-relative flux-density variations over all 2019 observations as a
-function of SNR.**
+![SNR Variations](./img/spec_spat_diff_sn_test.png)  
+*Standard deviation of the relative flux-density variations over all
+2019 observations as a function of SNR.*
 
 Concluding Remarks
 ------------------
@@ -261,19 +262,19 @@ work here.
 References
 ----------
 
-Selman, F.J. 2019, AN 341, 26  
-Heyl, J.S. 2013, MNRAS 433, 935  
 [Bradley, L. et al. 2021,  astropy/photutils: 1.1.0, Zenodo.](https://doi.org/10.5281/zenodo.4624996)  
-Stetson, P.B. 1982, PASP 99, 191  
-Ginsburg A. et al. 2019, AJ 157, 98  
-Weilbacher et al. 2020, A&A 641, A28  
-MUSE-DRP: MUSE Data Reduction Pipeline, `ascl:1610.004`  
-[Giesers, B. et al. 2018, MNRAS 475, L15](https://doi.org/10.1093/mnrasl/slx203)  
 [Giesers, B. 2020, PhD Thesis, Georg-August-Universität Göttingen](http://hdl.handle.net/21.11130/00-1735-0000-0005-13B4-A)  
-Weilbacher, P. et al. 2015, A&A 582, A114  
-Streicher, O. and Weilbacher P. 2012, ASPC 461, 853  
-Streicher O. 2016, `ascl:1612.001`  
+[Giesers, B. et al. 2018, MNRAS 475, L15](https://doi.org/10.1093/mnrasl/slx203)  
+[Ginsburg A. et al. 2019, AJ 157, 98](https://doi.org/10.3847/1538-3881/aafc33)  
+[Heyl, J.S. 2013, MNRAS 433, 935](https://doi.org/10.1093/mnras/stt781)  
+[MUSE-DRP: MUSE Data Reduction Pipeline, `ascl:1610.004`](http://ascl.net/1610.004)  
 [Moro, D. and Munari, U. 2000, A&AS 147, 361](https://doi.org/10.1051/aas:2000370)
+[Selman, F.J. 2019, AN 341, 26](https://doi.org/10.1002/asna.202013637)  
+[Stetson, P.B. 1982, PASP 99, 191](https://doi.org/10.1086/131977)  
+[Streicher O. 2016, `ascl:1612.001`](http://ascl.net/1612.001)  
+[Streicher, O. and Weilbacher P. 2012, ASPC 461, 853](http://aspbooks.org/custom/publications/paper/461-0853.html)  
+[Weilbacher et al. 2020, A&A 641, A28](https://doi.org/10.1051/0004-6361/202037855)  
+[Weilbacher, P. et al. 2015, A&A 582, A114](https://dx.doi.org/10.1051/0004-6361/202037855)  
 
 Appendix
 --------
